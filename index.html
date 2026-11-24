@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#07040c">
+<title>Zombie Fungus — The Infection</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<div id="hud">
+  <div class="chip brand">ZOMBIE FUNGUS<span>THE INFECTION</span></div>
+  <div class="chip res" id="r-spores" title="Esporos: compram fungos e melhorias de fungos"><i class="ic spores"></i><b>0</b><small>+0/s</small></div>
+  <div class="chip res" id="r-water" title="Água: consumida pelo crescimento das raízes"><i class="ic water"></i><b>0</b><small>+0/s</small></div>
+  <div class="chip res" id="r-biomass" title="Biomassa: matéria orgânica contaminada, evolui as raízes"><i class="ic biomass"></i><b>0</b><small>+0/s</small></div>
+  <div class="chip res" id="r-dna" title="DNA: desbloqueia mutações"><i class="ic dna"></i><b>0</b><small>&nbsp;</small></div>
+  <div class="chip lvl"><div class="badge" id="lv">1</div><div class="col"><div class="bar"><div id="xpf"></div></div><small id="xpt">0 / 30 XP</small></div></div>
+  <div class="chip inf"><div class="col"><small>Território infectado</small><div class="bar"><div id="inff"></div></div></div><b id="infp">0%</b></div>
+  <div class="chip score"><small>Pontos</small><b id="score">0</b></div>
+</div>
+
+<div id="goal" class="chip"></div>
+<div id="hint"></div>
+
+<div id="actions">
+  <button id="sprout" class="btn"><span>🍄 Brotar Fungo</span><small id="sproutCost"></small></button>
+  <button id="shopBtn" class="btn main"><span>🧬 Evoluir</span><small>Melhorias</small></button>
+</div>
+
+<div id="shop" class="hidden">
+  <header>
+    <div class="tabs">
+      <button data-t="0" class="on">Raízes<em></em></button>
+      <button data-t="1">Fungos<em></em></button>
+      <button data-t="2">Mutações<em></em></button>
+      <button data-t="3">Conquistas</button>
+      <button data-t="4">⚙</button>
+    </div>
+    <button id="closeShop">✕</button>
+  </header>
+  <div id="list"></div>
+</div>
+
+<div id="toasts"></div>
+<div id="modal" class="hidden"><div class="box" id="modalBox"></div></div>
+
+<script src="game.js"></script>
+</body>
+</html>
