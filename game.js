@@ -1,4 +1,5 @@
 'use strict';
+window.addEventListener('error', e => { const h = document.getElementById('hint'); if (h) { h.className = 'warn'; h.textContent = 'Erro: ' + e.message; } });
 (() => {
 const $ = s => document.querySelector(s), cv = $('#c'), ctx = cv.getContext('2d');
 const X0 = -1000, X1 = 1000, WW = 2000, DEP = 1300, CS = 25, GC = 80, GR = 52, SEG = 9, MAXN = 15000, MAXM = 150;
