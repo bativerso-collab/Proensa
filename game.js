@@ -493,7 +493,7 @@ function drawSurface() {
     ctx.beginPath(); ctx.ellipse(l.x, sy(l.x) + 1, l.s, l.s * .3, l.a, 0, TAU); ctx.fill();
   }
   const bk = [[], [], [], [], []];
-  for (const g of W.grass) if (g.x > vb.x0 && g.x < vb.x1) bk[Math.round(surf[g.c] * 4)].push(g);
+  for (const g of W.grass) if (g.x > vb.x0 && g.x < vb.x1) bk[clamp(Math.round(surf[g.c] * 4), 0, 4) || 0].push(g);
   ctx.lineCap = 'round';
   bk.forEach((arr, q) => {
     if (!arr.length) return;
@@ -827,8 +827,9 @@ addEventListener('pagehide', save);
 if (!load()) newGame();
 cam = { x: 0, y: 50, z: clamp(Math.min(SW / 420, SH / 460), .6, 2.4) }; clampCam();
 let last = performance.now();
-function frame(now) {
-  const dt = Math.min(.05, (now - last) / 1000); last = now;
+function frame() {
+  const now = performance.now();
+  const dt = clamp((now - last) / 1000, 0, .05) || 0; last = now;
   update(dt); render(); hud(dt);
   requestAnimationFrame(frame);
 }
