@@ -729,7 +729,7 @@ function buildShop() {
       <p>🖱️ Arraste para mover · Roda/pinça para zoom · Toque no fungo para esporos · Toque no subsolo para guiar raízes.</p>
       <button id="saveNow">💾 Salvar agora</button><button id="resetG" class="danger">☠ Reiniciar infecção</button></div>`;
     $('#saveNow').onclick = () => { save(); toast('Jogo salvo.'); };
-    $('#resetG').onclick = () => { if (confirm('Apagar todo o progresso?')) { localStorage.removeItem(KEY); location.reload(); } };
+    $('#resetG').onclick = () => { const b = $('#resetG'); if (b.dataset.c) { try { localStorage.removeItem(KEY); } catch (e) { } location.reload(); } else { b.dataset.c = 1; b.textContent = 'Toque de novo para confirmar'; } };
   }
   updShop();
 }
