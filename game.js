@@ -794,7 +794,8 @@ function load() {
   const tr = new Uint8Array(GC * GR); unbits(o.rev, tr); tr.forEach((v, k) => v && revealCell(k % GC, k / GC | 0));
   o.res.forEach((a, i) => { if (res[i]) { res[i].amt = a[0]; res[i].tap = a[1]; res[i].node = a[2]; } });
   mush = o.mush.map(a => ({ x: a[0], sz: a[1], hue: a[2], ph: rnd() * TAU, born: -10, sp: rnd() * 3 }));
-  o.surf.forEach((v, i) => surf[i] = v); o.pl.forEach((v, i) => W.plants[i] && (W.plants[i].inf = v));
+  o.surf.forEach((v, i) => surf[i] = clamp(v, 0, 1) || 0); o.pl.forEach((v, i) => W.plants[i] && (W.plants[i].inf = clamp(v, 0, 1) || 0));
+  for (const k of RES) if (!isFinite(S.r[k]) || S.r[k] < 0) S.r[k] = 0; if (!isFinite(S.xp)) S.xp = 0;
   tips = o.tips.filter(t => nodes[t[0]]).map(t => mkTip(t[0], t[1], t[2]));
   offline((Date.now() - S.t) / 1000);
   return true;
